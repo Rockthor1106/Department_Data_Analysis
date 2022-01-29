@@ -28,27 +28,5 @@ namespace Department_Data_Analysis
             InitializeComponent();
         }
 
-        private void OpenFileButton_Click(object sender, RoutedEventArgs e)
-        {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.ShowDialog();
-
-            Student student = new Student();
-            string[] StudentArray = new string[3];
-
-            DataTable dt = new DataTable();
-            dt.Columns.Add("Last Name", typeof(string));
-            dt.Columns.Add("First Name", typeof(string));
-            dt.Columns.Add("Subject", typeof(string));
-
-            using (StreamReader sr = new StreamReader(openFileDialog.FileName))
-            {
-                while(!sr.EndOfStream)
-                {
-                    StudentArray = sr.ReadLine().Split(";");
-                    txtBox1.Text = sr.Readli
-                }
-            }
-        }
     }
 }
