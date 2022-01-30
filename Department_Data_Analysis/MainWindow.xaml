@@ -18,22 +18,19 @@
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="30*"></RowDefinition>
                 <RowDefinition Height="187*"></RowDefinition>
             </Grid.RowDefinitions>
-            <ComboBox Grid.Column="0" SelectedIndex="0">Código de departamento</ComboBox>
+            <ComboBox x:Name="DepartmentCB" Grid.Column="0" SelectedIndex="0" SelectionChanged="ComboBox_SelectionChanged">Código de departamento</ComboBox>
             <ComboBox Grid.Column="1" SelectedIndex="0">Código de municipio</ComboBox>
             <ComboBox Grid.Column="2" SelectedIndex="0">Departamento</ComboBox>
             <ComboBox Grid.Column="3" SelectedIndex="0">Municipio</ComboBox>
-            <ComboBox Grid.Column="4" SelectedIndex="0">Tipo</ComboBox>
-            <ListView Grid.Column="0" Grid.Row="1"></ListView>
-            <ListView Grid.Column="1" Grid.Row="1"></ListView>
-            <ListView Grid.Column="2" Grid.Row="1"></ListView>
-            <ListView Grid.Column="3" Grid.Row="1"></ListView>
-            <ListView Grid.Column="4" Grid.Row="1"></ListView>
+            <ListView x:Name="DepartmentCodeColumn" Grid.Column="0" Height="187" Grid.RowSpan="2" VerticalAlignment="Bottom"/>
+            <ListView x:Name="MunicipalityCodeColumn" Grid.Column="1" Grid.Row="1"></ListView>
+            <ListView x:Name="DepartmentColumn" Grid.Column="2" Grid.Row="1"></ListView>
+            <ListView x:Name="MunicipalityColumn" Grid.Column="3" Grid.Row="1"></ListView>
         </Grid>
 
         <Grid Grid.Row="1">

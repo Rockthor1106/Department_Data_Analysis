@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Data;
 using System.Collections;
+using Department_Data_Analysis.model;
 
 namespace Department_Data_Analysis
 {
@@ -23,6 +24,9 @@ namespace Department_Data_Analysis
     /// </summary>
     public partial class MainWindow : Window
     {
+        private List<Department> departmentList = new List<Department>();
+        private List<Municipality> munipalityList = new List<Municipality>();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -33,12 +37,44 @@ namespace Department_Data_Analysis
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.ShowDialog();
 
-            string[] lines = File.ReadAllLines(openFileDialog.FileName);
-            foreach (string line in lines)
+            using (var reader = new StreamReader(openFileDialog.FileName))
             {
-                Console.WriteLine(line);
+          
+                while (!reader.EndOfStream)
+                {
+                    var line = reader.ReadLine();
+                    var values = line.Split(',');
+
+                    departmentList.Add(new Department(values[2], Int32.Parse(values[0])));
+                    munipalityList.Add(new Municipality(values[3], Int32.Parse(values[1])));
+                }
+
+                foreach (Department department in departmentList)
+                {
+                    DepartmentColumn.Items.Add(department.Name);
+                    DepartmentCodeColumn.Items.Add(department.Code);
+                }
+
+                foreach (Municipality municipality in munipalityList)
+                {
+                    MunicipalityColumn.Items.Add(municipality.Name);
+                    MunicipalityCodeColumn.Items.Add(municipality.Code);
+                }
+
+                for (int i = 0; i < departmentList.Count; i++)
+                {
+                    if (!DepartmentCB.Items.Contains(departmentList[i].Name))
+                    {
+                        DepartmentCB.Items.Add(departmentList[i].Name);
+                    }
+                }
+
             }
         }
 
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

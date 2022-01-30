@@ -8,15 +8,13 @@ namespace Department_Data_Analysis.model
 {
     class Municipality
     {
-        private string Name;
-        private int Code;
-        private string type;
+        public string Name { get; set; }
+        public int Code { get; set; }
 
-        public Municipality(string Name, int Code, string type)
+        public Municipality(string Name, int Code)
         {
             this.Name = Name;
             this.Code = Code;
-            this.type = type;
         }
     }
 }
