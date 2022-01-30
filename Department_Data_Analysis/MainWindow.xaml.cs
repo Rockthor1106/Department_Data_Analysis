@@ -48,7 +48,7 @@ namespace Department_Data_Analysis
                     var values = line.Split(',');
 
                     departmentList.Add(new Department(values[2], Int32.Parse(values[0])));
-                    municipalityList.Add(new Municipality(values[3], Int32.Parse(values[1])));
+                    municipalityList.Add(new Municipality(values[3], Int32.Parse(values[1]), values[4]));
                 }
 
                 foreach (Department department in departmentList)
@@ -61,6 +61,7 @@ namespace Department_Data_Analysis
                 {
                     MunicipalityColumn.Items.Add(municipality.Name);
                     MunicipalityCodeColumn.Items.Add(municipality.Code);
+                    TypeColumn.Items.Add(municipality.Type);
                 }
 
                 for (int i = 0; i < departmentList.Count; i++)
@@ -87,6 +88,11 @@ namespace Department_Data_Analysis
                     {
                         MunicipalityCodeCB.Items.Add(municipalityList[i].Code);
                     }
+
+                    if (!TypeCB.Items.Contains(municipalityList[i].Type))
+                    {
+                        TypeCB.Items.Add(municipalityList[i].Type);
+                    }
                 }
 
 
@@ -100,7 +106,7 @@ namespace Department_Data_Analysis
 
         private void DepartmentCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if(DepartmentColumn != null && MunicipalityCodeColumn != null)
+            if (DepartmentColumn != null && MunicipalityCodeColumn != null)
             {
                 DepartmentColumn.Items.Clear();
                 DepartmentCodeColumn.Items.Clear();
@@ -114,6 +120,21 @@ namespace Department_Data_Analysis
                     }
                 }
 
+            }
+        }
+
+        private void TypeCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (TypeColumn != null)
+            {
+                TypeColumn.Items.Clear();
+
+                foreach (Municipality municipality in municipalityList)
+                {
+                    if (TypeCB.SelectedItem.Equals(municipality.Type)) {
+                        TypeColumn.Items.Add(municipality.Type);
+                    }
+                }
             }
         }
     }

@@ -10,11 +10,13 @@ namespace Department_Data_Analysis.model
     {
         public string Name { get; set; }
         public int Code { get; set; }
+        public string Type { get; set; }
 
-        public Municipality(string Name, int Code)
+        public Municipality(string Name, int Code, string Type)
         {
             this.Name = Name;
             this.Code = Code;
+            this.Type = Type;
         }
     }
 }

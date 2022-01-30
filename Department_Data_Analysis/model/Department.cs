@@ -15,7 +15,6 @@ namespace Department_Data_Analysis.model
         {
             this.Name = Name;
             this.Code = Code;
-
         }
     }
 }
