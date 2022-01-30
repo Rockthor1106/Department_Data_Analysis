@@ -99,30 +99,6 @@ namespace Department_Data_Analysis
             }
         }
 
-        private void DepartmentCodeCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
-        private void DepartmentCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (DepartmentColumn != null && MunicipalityCodeColumn != null)
-            {
-                DepartmentColumn.Items.Clear();
-                DepartmentCodeColumn.Items.Clear();
-
-                foreach (Department department in departmentList)
-                {
-                    if (DepartmentCB.SelectedItem.Equals(department.Name))
-                    {
-                        DepartmentColumn.Items.Add(department.Name);
-                        DepartmentCodeColumn.Items.Add(department.Code);
-                    }
-                }
-
-            }
-        }
-
         private void TypeCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (TypeColumn != null && DepartmentCodeColumn != null && MunicipalityCodeColumn != null && DepartmentColumn != null && MunicipalityColumn != null)

@@ -25,9 +25,9 @@
                 <RowDefinition Height="30*"></RowDefinition>
                 <RowDefinition Height="187*"></RowDefinition>
             </Grid.RowDefinitions>
-            <ComboBox x:Name="DepartmentCodeCB" Grid.Column="0" SelectedIndex="0" SelectionChanged="DepartmentCodeCB_SelectionChanged">Código de departamento</ComboBox>
+            <ComboBox x:Name="DepartmentCodeCB" Grid.Column="0" SelectedIndex="0">Código de departamento</ComboBox>
             <ComboBox x:Name="MunicipalityCodeCB" Grid.Column="1" SelectedIndex="0">Código de municipio</ComboBox>
-            <ComboBox x:Name="DepartmentCB" Grid.Column="2" SelectedIndex="0" SelectionChanged="DepartmentCB_SelectionChanged">Departamento</ComboBox>
+            <ComboBox x:Name="DepartmentCB" Grid.Column="2" SelectedIndex="0">Departamento</ComboBox>
             <ComboBox x:Name="MunicipalityCB" Grid.Column="3" SelectedIndex="0">Municipio</ComboBox>
             <ComboBox x:Name="TypeCB" Grid.Column="4" SelectedIndex="0" SelectionChanged="TypeCB_SelectionChanged">Tipo</ComboBox>
             <ListView x:Name="DepartmentCodeColumn" Grid.Column="0" Grid.Row="1"></ListView>
