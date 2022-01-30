@@ -28,5 +28,17 @@ namespace Department_Data_Analysis
             InitializeComponent();
         }
 
+        private void importData_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.ShowDialog();
+
+            string[] lines = File.ReadAllLines(openFileDialog.FileName);
+            foreach (string line in lines)
+            {
+                Console.WriteLine(line);
+            }
+        }
+
     }
 }

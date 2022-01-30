@@ -24,11 +24,16 @@
                 <RowDefinition Height="30*"></RowDefinition>
                 <RowDefinition Height="187*"></RowDefinition>
             </Grid.RowDefinitions>
-            <ComboBox Grid.Column="0"></ComboBox>
-            <ComboBox Grid.Column="1"></ComboBox>
-            <ComboBox Grid.Column="2"></ComboBox>
-            <ComboBox Grid.Column="3"></ComboBox>
-            <ComboBox Grid.Column="4"></ComboBox>
+            <ComboBox Grid.Column="0" SelectedIndex="0">Código de departamento</ComboBox>
+            <ComboBox Grid.Column="1" SelectedIndex="0">Código de municipio</ComboBox>
+            <ComboBox Grid.Column="2" SelectedIndex="0">Departamento</ComboBox>
+            <ComboBox Grid.Column="3" SelectedIndex="0">Municipio</ComboBox>
+            <ComboBox Grid.Column="4" SelectedIndex="0">Tipo</ComboBox>
+            <ListView Grid.Column="0" Grid.Row="1"></ListView>
+            <ListView Grid.Column="1" Grid.Row="1"></ListView>
+            <ListView Grid.Column="2" Grid.Row="1"></ListView>
+            <ListView Grid.Column="3" Grid.Row="1"></ListView>
+            <ListView Grid.Column="4" Grid.Row="1"></ListView>
         </Grid>
 
         <Grid Grid.Row="1">
@@ -36,7 +41,14 @@
                 <ColumnDefinition Width="200"></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Button Content="Importar Datos" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="-0.131,-0.239" Height="29" Width="102"/>
+            <Button Name="importDataBtn"
+                    Content="Importar Datos" 
+                    HorizontalAlignment="Center" 
+                    VerticalAlignment="Center" 
+                    RenderTransformOrigin="-0.131,-0.239" 
+                    Height="29" 
+                    Width="102" Click="importData_Click"
+            />
         </Grid>
 
     </Grid>
