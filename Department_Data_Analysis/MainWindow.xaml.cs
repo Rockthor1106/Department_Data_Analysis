@@ -16,6 +16,8 @@ using System.Windows.Shapes;
 using System.Data;
 using System.Collections;
 using Department_Data_Analysis.model;
+using LiveCharts;
+using LiveCharts.Wpf;
 
 namespace Department_Data_Analysis
 {
@@ -25,7 +27,7 @@ namespace Department_Data_Analysis
     public partial class MainWindow : Window
     {
         private List<Department> departmentList = new List<Department>();
-        private List<Municipality> munipalityList = new List<Municipality>();
+        private List<Municipality> municipalityList = new List<Municipality>();
 
         public MainWindow()
         {
@@ -46,7 +48,7 @@ namespace Department_Data_Analysis
                     var values = line.Split(',');
 
                     departmentList.Add(new Department(values[2], Int32.Parse(values[0])));
-                    munipalityList.Add(new Municipality(values[3], Int32.Parse(values[1])));
+                    municipalityList.Add(new Municipality(values[3], Int32.Parse(values[1])));
                 }
 
                 foreach (Department department in departmentList)
@@ -55,7 +57,7 @@ namespace Department_Data_Analysis
                     DepartmentCodeColumn.Items.Add(department.Code);
                 }
 
-                foreach (Municipality municipality in munipalityList)
+                foreach (Municipality municipality in municipalityList)
                 {
                     MunicipalityColumn.Items.Add(municipality.Name);
                     MunicipalityCodeColumn.Items.Add(municipality.Code);
@@ -67,14 +69,52 @@ namespace Department_Data_Analysis
                     {
                         DepartmentCB.Items.Add(departmentList[i].Name);
                     }
+
+                    if (!DepartmentCodeCB.Items.Contains(departmentList[i].Code))
+                    {
+                        DepartmentCodeCB.Items.Add(departmentList[i].Code);
+                    }
                 }
+
+                for (int i = 0; i < municipalityList.Count; i++)
+                {
+                    if (!MunicipalityCB.Items.Contains(municipalityList[i].Name))
+                    {
+                        MunicipalityCB.Items.Add(municipalityList[i].Name);
+                    }
+
+                    if (!MunicipalityCodeCB.Items.Contains(municipalityList[i].Code))
+                    {
+                        MunicipalityCodeCB.Items.Add(municipalityList[i].Code);
+                    }
+                }
+
 
             }
         }
 
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void DepartmentCodeCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+
+        private void DepartmentCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(DepartmentColumn != null && MunicipalityCodeColumn != null)
+            {
+                DepartmentColumn.Items.Clear();
+                DepartmentCodeColumn.Items.Clear();
+
+                foreach (Department department in departmentList)
+                {
+                    if (DepartmentCB.SelectedItem.Equals(department.Name))
+                    {
+                        DepartmentColumn.Items.Add(department.Name);
+                        DepartmentCodeColumn.Items.Add(department.Code);
+                    }
+                }
+
+            }
         }
     }
 }
