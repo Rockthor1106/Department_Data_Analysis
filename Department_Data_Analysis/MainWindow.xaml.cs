@@ -18,6 +18,9 @@ using System.Collections;
 using Department_Data_Analysis.model;
 using LiveCharts;
 using LiveCharts.Wpf;
+using System.Collections.ObjectModel;
+using LiveCharts.Configurations;
+using LiveCharts.Helpers;
 
 namespace Department_Data_Analysis
 {
@@ -32,6 +35,7 @@ namespace Department_Data_Analysis
         public MainWindow()
         {
             InitializeComponent();
+
         }
 
         private void importData_Click(object sender, RoutedEventArgs e)
@@ -119,7 +123,6 @@ namespace Department_Data_Analysis
                         DepartmentColumn.Items.Add(municipality.Department.Name);
                         DepartmentCodeColumn.Items.Add(municipality.Department.Code);
                     }
-  
                 }
             }
         }
