@@ -48,7 +48,7 @@ namespace Department_Data_Analysis
                     var values = line.Split(',');
 
                     departmentList.Add(new Department(values[2], Int32.Parse(values[0])));
-                    municipalityList.Add(new Municipality(values[3], Int32.Parse(values[1]), values[4]));
+                    municipalityList.Add(new Municipality(values[3], Int32.Parse(values[1]), values[4], new Department(values[2], Int32.Parse(values[0]))));
                 }
 
                 foreach (Department department in departmentList)
@@ -125,15 +125,25 @@ namespace Department_Data_Analysis
 
         private void TypeCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (TypeColumn != null)
+            if (TypeColumn != null && DepartmentCodeColumn != null && MunicipalityCodeColumn != null && DepartmentColumn != null && MunicipalityColumn != null)
             {
                 TypeColumn.Items.Clear();
+                DepartmentCodeColumn.Items.Clear();
+                MunicipalityCodeColumn.Items.Clear();
+                DepartmentColumn.Items.Clear();
+                MunicipalityColumn.Items.Clear();
+                
 
                 foreach (Municipality municipality in municipalityList)
                 {
                     if (TypeCB.SelectedItem.Equals(municipality.Type)) {
                         TypeColumn.Items.Add(municipality.Type);
+                        MunicipalityColumn.Items.Add(municipality.Name);
+                        MunicipalityCodeColumn.Items.Add(municipality.Code);
+                        DepartmentColumn.Items.Add(municipality.Department.Name);
+                        DepartmentCodeColumn.Items.Add(municipality.Department.Code);
                     }
+  
                 }
             }
         }
